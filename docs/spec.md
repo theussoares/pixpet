@@ -47,7 +47,7 @@ Ver `solution-design.md`.
 | A5 | Zoom liberado | Sem `user-scalable=no`; `pinch-to-zoom` funciona |
 | A6 | Contraste AA | Texto principal ≥ 4.5:1 em ambos os temas (claro/escuro) |
 | A7 | Responsivo | Sem scroll horizontal do body de 320px a 1440px |
-| A8 | Sem "cara de IA" | Paleta e tipografia específicas do domínio, fora dos defaults genéricos |
+| A8 | Sem "cara de IA" | Direção de arte "casa de ração de bairro": tipografia de sinalização (Anton, embutida), papel kraft com grão, etiquetas furadas, cupom de fidelidade — fora dos defaults genéricos |
 | A9 | Fallback de imagem | Se a imagem do produto falhar, exibe placeholder SVG coerente (não quebra o layout) |
 | A10 | Foco de teclado visível | Todo controle interativo tem estado `:focus-visible` |
 
