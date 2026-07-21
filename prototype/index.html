@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PixPet — Ração e cuidado com cashback de verdade</title>
+<meta name="description" content="Ração, higiene, brinquedos e acessórios para o seu pet. Pix na hora, cashback em PixCoins e assinatura que economiza. Entrega rápida." />
+<meta name="theme-color" content="#1C7A55" />
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F6F8F3; --surface:#FFFFFF; --surface-2:#EEF2EA;
+    --ink:#16221C; --ink-2:#4A5A50;
+    --line:#DCE4DB;
+    --brand:#1C7A55; --brand-ink:#12513A; --brand-tint:#E3F1E9;
+    --amber:#F0A93D; --amber-ink:#7E5210; --amber-tint:#FBEACC;
+    --sale:#E24B3F; --sale-tint:#FBE3E0;
+    --coin-a:#F6C64F; --coin-b:#E09826;
+    --shadow: 0 1px 2px rgba(20,40,30,.05), 0 12px 30px -14px rgba(20,60,40,.22);
+    --shadow-sm: 0 1px 2px rgba(20,40,30,.06), 0 4px 12px -8px rgba(20,60,40,.25);
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+    --maxw:1160px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0E1512; --surface:#16211C; --surface-2:#1E2C25;
+      --ink:#E9F0EA; --ink-2:#9EB1A5;
+      --line:#26362E;
+      --brand:#37B183; --brand-ink:#6FD3A9; --brand-tint:#143026;
+      --amber:#F0A93D; --amber-ink:#F4C577; --amber-tint:#2E2413;
+      --sale:#F0685C; --sale-tint:#35201E;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -18px rgba(0,0,0,.7);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 6px 16px -10px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1512; --surface:#16211C; --surface-2:#1E2C25;
+    --ink:#E9F0EA; --ink-2:#9EB1A5; --line:#26362E;
+    --brand:#37B183; --brand-ink:#6FD3A9; --brand-tint:#143026;
+    --amber:#F0A93D; --amber-ink:#F4C577; --amber-tint:#2E2413;
+    --sale:#F0685C; --sale-tint:#35201E;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -18px rgba(0,0,0,.7);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 6px 16px -10px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --paper:#F6F8F3; --surface:#FFFFFF; --surface-2:#EEF2EA;
+    --ink:#16221C; --ink-2:#4A5A50; --line:#DCE4DB;
+    --brand:#1C7A55; --brand-ink:#12513A; --brand-tint:#E3F1E9;
+    --amber:#F0A93D; --amber-ink:#7E5210; --amber-tint:#FBEACC;
+    --sale:#E24B3F; --sale-tint:#FBE3E0;
+    --shadow: 0 1px 2px rgba(20,40,30,.05), 0 12px 30px -14px rgba(20,60,40,.22);
+    --shadow-sm: 0 1px 2px rgba(20,40,30,.06), 0 4px 12px -8px rgba(20,60,40,.25);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{margin:0; line-height:1.08; letter-spacing:-.02em; text-wrap:balance}
+  p{margin:0}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  button{font-family:inherit; cursor:pointer}
+  :focus-visible{outline:2.5px solid var(--brand); outline-offset:2px; border-radius:4px}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+  .num{font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-ink)}
+
+  /* ---------- Ticker ---------- */
+  .ticker{background:var(--brand); color:#EAFBF2; font-size:.82rem; font-weight:600; overflow:hidden; white-space:nowrap; border-bottom:1px solid rgba(0,0,0,.08)}
+  .ticker__track{display:inline-flex; gap:0; padding:8px 0; animation:marq 26s linear infinite}
+  .ticker__track span{padding:0 26px; position:relative}
+  .ticker__track span::after{content:"·"; position:absolute; right:-3px; opacity:.5}
+  @keyframes marq{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion: reduce){ .ticker__track{animation:none; padding-left:16px} }
+
+  /* ---------- Header ---------- */
+  .site-header{position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line)}
+  .header-row{display:flex; align-items:center; gap:18px; padding:12px 20px; max-width:var(--maxw); margin:0 auto}
+  .brand{display:flex; align-items:center; gap:9px; font-weight:800; font-size:1.32rem; letter-spacing:-.03em; flex-shrink:0}
+  .brand .mark{width:34px; height:34px; flex-shrink:0}
+  .brand .px{color:var(--brand)}
+  .search{flex:1; min-width:0; position:relative; display:flex; align-items:center}
+  .search svg{position:absolute; left:14px; width:18px; height:18px; color:var(--ink-2); pointer-events:none}
+  .search input{width:100%; height:44px; border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:12px; padding:0 14px 0 42px; font-size:.95rem}
+  .search input::placeholder{color:var(--ink-2)}
+  .search input:focus-visible{outline:2.5px solid var(--brand); outline-offset:0; border-color:transparent}
+  .header-actions{display:flex; align-items:center; gap:8px; flex-shrink:0}
+  .icon-btn{width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--line); background:var(--surface); border-radius:12px; color:var(--ink)}
+  .icon-btn svg{width:20px; height:20px}
+  .wallet{display:flex; align-items:center; gap:8px; height:44px; padding:0 13px; border:1px solid var(--line); background:var(--surface); border-radius:12px; font-weight:700; font-size:.9rem}
+  .coin{width:20px; height:20px; border-radius:50%; background:radial-gradient(circle at 32% 30%, var(--coin-a), var(--coin-b)); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35), inset 0 -3px 5px rgba(0,0,0,.18); flex-shrink:0; display:grid; place-items:center; color:#6b3f06; font-size:.62rem; font-weight:900}
+  .cart-btn{position:relative}
+  .cart-badge{position:absolute; top:-6px; right:-6px; min-width:20px; height:20px; padding:0 5px; border-radius:11px; background:var(--amber); color:#3a2607; font-size:.72rem; font-weight:800; display:grid; place-items:center; border:2px solid var(--paper); transition:transform .18s cubic-bezier(.3,1.6,.5,1)}
+  .cart-badge.pop{transform:scale(1.35)}
+  .cart-badge[hidden]{display:none}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:34px 0 8px}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:34px; align-items:center}
+  .hero h1{font-size:clamp(2.15rem,5vw,3.35rem); font-weight:800}
+  .hero h1 em{font-style:normal; color:var(--brand); position:relative; white-space:nowrap}
+  .hero-lead{margin-top:16px; font-size:1.08rem; color:var(--ink-2); max-width:34ch}
+  .hero-cta{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap}
+  .hero-trust{display:flex; gap:18px; margin-top:26px; flex-wrap:wrap; color:var(--ink-2); font-size:.88rem; font-weight:600}
+  .hero-trust span{display:flex; align-items:center; gap:7px}
+  .hero-trust svg{width:16px; height:16px; color:var(--brand)}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; height:52px; padding:0 24px; border-radius:13px; font-weight:700; font-size:1rem; border:1px solid transparent; transition:transform .12s ease, background .18s ease, box-shadow .18s}
+  .btn:active{transform:translateY(1px) scale(.99)}
+  .btn-primary{background:var(--brand); color:#fff; box-shadow:0 10px 22px -12px var(--brand)}
+  .btn-primary:hover{background:var(--brand-ink)}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .btn svg{width:19px; height:19px}
+  .btn-sm{height:44px; padding:0 16px; font-size:.92rem; border-radius:11px}
+
+  /* Featured card in hero */
+  .feature{background:var(--surface); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative}
+  .feature__ribbon{position:absolute; top:16px; left:16px; z-index:2; display:flex; gap:8px}
+  .tag{font-size:.74rem; font-weight:800; padding:5px 10px; border-radius:8px; letter-spacing:.01em}
+  .tag-sale{background:var(--sale); color:#fff}
+  .tag-cash{background:var(--amber-tint); color:var(--amber-ink)}
+  .feature__media{aspect-ratio:16/11; background:var(--surface-2); display:grid; place-items:center; padding:18px}
+  .feature__media img{width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 18px 24px rgba(20,50,35,.16))}
+  .feature__body{padding:20px 22px 22px}
+  .feature__brand{font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2)}
+  .feature__name{font-size:1.18rem; font-weight:700; margin-top:4px}
+  .price-row{display:flex; align-items:baseline; gap:10px; margin-top:12px; flex-wrap:wrap}
+  .price-now{font-size:1.7rem; font-weight:800; letter-spacing:-.02em}
+  .price-old{color:var(--ink-2); text-decoration:line-through; font-size:1rem}
+  .price-cash{display:inline-flex; align-items:center; gap:6px; font-size:.82rem; font-weight:700; color:var(--amber-ink); background:var(--amber-tint); padding:4px 9px; border-radius:8px}
+  .sub-toggle{display:flex; align-items:center; gap:11px; margin-top:16px; padding:12px 14px; border:1px dashed var(--line); border-radius:13px; background:var(--surface-2)}
+  .switch{position:relative; width:44px; height:26px; flex-shrink:0}
+  .switch input{opacity:0; width:0; height:0; position:absolute}
+  .slider{position:absolute; inset:0; background:var(--line); border-radius:20px; transition:.2s}
+  .slider::before{content:""; position:absolute; height:20px; width:20px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.2s; box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .switch input:checked + .slider{background:var(--brand)}
+  .switch input:checked + .slider::before{transform:translateX(18px)}
+  .switch input:focus-visible + .slider{outline:2.5px solid var(--brand); outline-offset:2px}
+  .sub-toggle label{font-size:.86rem; font-weight:600; line-height:1.3}
+  .sub-toggle b{color:var(--brand-ink)}
+  .feature__actions{display:flex; gap:10px; margin-top:16px}
+  .feature__actions .btn-primary{flex:1}
+
+  /* ---------- Categories ---------- */
+  .section{padding:44px 0}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:22px}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2rem); font-weight:800}
+  .section-head p{color:var(--ink-2); margin-top:6px; font-size:.95rem}
+  .see-all{font-weight:700; color:var(--brand-ink); display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
+  .see-all svg{width:16px; height:16px; transition:transform .15s}
+  .see-all:hover svg{transform:translateX(3px)}
+
+  .cats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+  .cat{display:flex; align-items:center; gap:14px; padding:16px; background:var(--surface); border:1px solid var(--line); border-radius:16px; transition:transform .15s, box-shadow .18s, border-color .18s; text-align:left; width:100%; color:inherit}
+  .cat:hover{transform:translateY(-3px); box-shadow:var(--shadow-sm); border-color:color-mix(in srgb, var(--brand) 40%, var(--line))}
+  .cat__ic{width:46px; height:46px; border-radius:13px; display:grid; place-items:center; flex-shrink:0}
+  .cat__ic svg{width:26px; height:26px}
+  .cat b{display:block; font-size:.98rem}
+  .cat small{color:var(--ink-2); font-size:.8rem}
+
+  /* ---------- Product grid ---------- */
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; transition:transform .15s, box-shadow .2s, border-color .18s; position:relative}
+  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:color-mix(in srgb, var(--brand) 30%, var(--line))}
+  .card__badges{position:absolute; top:12px; left:12px; display:flex; flex-direction:column; gap:6px; z-index:2}
+  .card__fav{position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:50%; background:color-mix(in srgb,var(--surface) 80%, transparent); border:1px solid var(--line); display:grid; place-items:center; color:var(--ink-2); backdrop-filter:blur(4px)}
+  .card__fav:hover{color:var(--sale)}
+  .card__fav svg{width:17px; height:17px}
+  .card__media{aspect-ratio:1/1; background:var(--surface-2); display:grid; place-items:center; padding:16px}
+  .card__media img{width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply}
+  :root[data-theme="dark"] .card__media img, .card__media img.svg-ph{mix-blend-mode:normal}
+  @media (prefers-color-scheme: dark){ .card__media img{mix-blend-mode:normal} }
+  .card__body{padding:14px 15px 16px; display:flex; flex-direction:column; flex:1}
+  .card__brand{font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2)}
+  .card__name{font-size:.95rem; font-weight:600; margin-top:3px; line-height:1.28; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.5em}
+  .card__meta{margin-top:auto; padding-top:12px}
+  .card__price{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+  .card__now{font-size:1.28rem; font-weight:800; letter-spacing:-.02em}
+  .card__old{font-size:.85rem; color:var(--ink-2); text-decoration:line-through}
+  .card__cash{display:inline-flex; align-items:center; gap:5px; font-size:.76rem; font-weight:700; color:var(--amber-ink); margin-top:8px}
+  .card__cash .coin{width:15px; height:15px; font-size:0}
+  .card__stock{font-size:.76rem; color:var(--brand-ink); font-weight:600; margin-top:6px; display:flex; align-items:center; gap:6px}
+  .card__stock i{width:7px;height:7px;border-radius:50%;background:var(--brand); display:inline-block}
+  .card__add{margin-top:12px; width:100%; height:44px; border-radius:12px; border:1px solid var(--brand); background:var(--brand-tint); color:var(--brand-ink); font-weight:700; font-size:.92rem; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .16s, color .16s}
+  .card__add:hover{background:var(--brand); color:#fff}
+  .card__add svg{width:17px; height:17px}
+  .card__add.added{background:var(--brand); color:#fff}
+
+  /* ---------- Cashback band ---------- */
+  .band{background:linear-gradient(135deg, var(--brand) 0%, var(--brand-ink) 100%); color:#EAFBF2; border-radius:26px; padding:44px; display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center; overflow:hidden; position:relative}
+  .band::before{content:""; position:absolute; right:-80px; top:-80px; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle, rgba(240,169,61,.35), transparent 70%)}
+  .band__c{position:relative; z-index:1}
+  .band h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,3.4vw,2.5rem); letter-spacing:-.01em; line-height:1.12}
+  .band h2 em{font-style:italic; color:#FCD98B}
+  .band p{margin-top:14px; color:#CDE9DB; font-size:1.03rem; max-width:46ch}
+  .band__list{display:flex; gap:26px; margin-top:24px; flex-wrap:wrap}
+  .band__list div{display:flex; align-items:center; gap:9px; font-weight:600; font-size:.92rem}
+  .band__list svg{width:18px; height:18px; color:#FCD98B}
+  .band .btn{margin-top:28px; background:var(--amber); color:#3a2607}
+  .band .btn:hover{background:#f6b954}
+  .coins-viz{position:relative; z-index:1; display:grid; place-items:center; min-height:180px}
+  .coins-viz .big-coin{width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at 34% 30%, var(--coin-a), var(--coin-b)); box-shadow:inset 0 0 0 6px rgba(255,255,255,.25), inset 0 -12px 22px rgba(0,0,0,.25), 0 24px 40px -12px rgba(0,0,0,.4); display:grid; place-items:center; color:#6b3f06; font-weight:900; text-align:center; line-height:1; transform:rotate(-8deg)}
+  .coins-viz .big-coin span{font-size:.7rem; display:block; font-weight:800; letter-spacing:.05em}
+  .coins-viz .big-coin b{font-size:2.4rem; letter-spacing:-.03em}
+  .coins-viz .mini{position:absolute; border-radius:50%; background:radial-gradient(circle at 34% 30%, var(--coin-a), var(--coin-b)); box-shadow:inset 0 -4px 8px rgba(0,0,0,.2)}
+  .coins-viz .m1{width:44px;height:44px; top:12px; left:26%} .coins-viz .m2{width:30px;height:30px; bottom:20px; right:24%} .coins-viz .m3{width:22px;height:22px; top:40%; right:14%}
+
+  /* ---------- Assurance ---------- */
+  .assure{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+  .assure div{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px}
+  .assure .ic{width:42px; height:42px; border-radius:12px; background:var(--brand-tint); color:var(--brand-ink); display:grid; place-items:center; margin-bottom:12px}
+  .assure .ic svg{width:22px;height:22px}
+  .assure b{display:block; font-size:1rem}
+  .assure p{color:var(--ink-2); font-size:.88rem; margin-top:4px}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line); margin-top:20px; padding:38px 0 60px; color:var(--ink-2); font-size:.9rem}
+  .foot-grid{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap}
+  .foot-grid b{color:var(--ink)}
+  footer .brand{font-size:1.1rem; margin-bottom:8px}
+  .foot-note{margin-top:26px; padding-top:18px; border-top:1px solid var(--line); font-size:.82rem}
+
+  /* ---------- Cart drawer ---------- */
+  .overlay{position:fixed; inset:0; background:rgba(10,20,15,.5); backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .25s; z-index:60}
+  .overlay.open{opacity:1; visibility:visible}
+  .drawer{position:fixed; top:0; right:0; height:100dvh; width:min(420px,100%); background:var(--paper); z-index:70; transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column; box-shadow:-20px 0 50px -20px rgba(0,0,0,.4)}
+  .drawer.open{transform:translateX(0)}
+  .drawer__head{display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--line)}
+  .drawer__head h3{font-size:1.15rem; font-weight:800}
+  .drawer__items{flex:1; overflow-y:auto; padding:8px 20px}
+  .line{display:flex; gap:13px; padding:16px 0; border-bottom:1px solid var(--line)}
+  .line__img{width:64px; height:64px; border-radius:12px; background:var(--surface-2); flex-shrink:0; display:grid; place-items:center; padding:6px; border:1px solid var(--line)}
+  .line__img img{width:100%; height:100%; object-fit:contain}
+  .line__info{flex:1; min-width:0}
+  .line__name{font-size:.9rem; font-weight:600; line-height:1.25}
+  .line__sub{display:inline-flex; align-items:center; gap:4px; font-size:.72rem; font-weight:700; color:var(--brand-ink); background:var(--brand-tint); padding:2px 7px; border-radius:6px; margin-top:5px}
+  .line__bottom{display:flex; align-items:center; justify-content:space-between; margin-top:10px}
+  .stepper{display:flex; align-items:center; border:1px solid var(--line); border-radius:10px; overflow:hidden}
+  .stepper button{width:30px; height:30px; background:var(--surface); border:none; color:var(--ink); font-size:1.1rem; display:grid; place-items:center; line-height:1}
+  .stepper button:hover{background:var(--surface-2)}
+  .stepper span{min-width:30px; text-align:center; font-weight:700; font-size:.9rem}
+  .line__price{font-weight:800; font-size:1rem}
+  .line__rm{background:none; border:none; color:var(--ink-2); font-size:.78rem; text-decoration:underline; padding:4px 0}
+  .line__rm:hover{color:var(--sale)}
+  .cart-empty{text-align:center; padding:60px 20px; color:var(--ink-2)}
+  .cart-empty svg{width:56px; height:56px; color:var(--line); margin-bottom:14px}
+  .cart-empty b{color:var(--ink); display:block; font-size:1.05rem; margin-bottom:6px}
+
+  .ship-bar{padding:14px 20px 4px}
+  .ship-bar p{font-size:.83rem; color:var(--ink-2); margin-bottom:8px}
+  .ship-bar b{color:var(--brand-ink)}
+  .ship-track{height:8px; border-radius:5px; background:var(--surface-2); overflow:hidden}
+  .ship-fill{height:100%; background:linear-gradient(90deg,var(--brand),var(--brand-ink)); border-radius:5px; width:0; transition:width .3s}
+  .drawer__foot{border-top:1px solid var(--line); padding:18px 20px calc(18px + env(safe-area-inset-bottom)); background:var(--surface)}
+  .sumline{display:flex; justify-content:space-between; font-size:.92rem; margin-bottom:9px; color:var(--ink-2)}
+  .sumline b{color:var(--ink)}
+  .sumline.cash b{color:var(--amber-ink)}
+  .sumline.total{font-size:1.2rem; color:var(--ink); margin:12px 0 16px; padding-top:12px; border-top:1px solid var(--line)}
+  .sumline.total b{font-weight:800}
+  .pix-note{display:flex; align-items:center; justify-content:center; gap:7px; margin-top:12px; font-size:.8rem; color:var(--ink-2)}
+  .pix-note svg{width:15px; height:15px; color:var(--brand)}
+
+  /* ---------- Toast ---------- */
+  .toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--paper); padding:13px 20px; border-radius:13px; font-weight:600; font-size:.9rem; box-shadow:0 16px 40px -12px rgba(0,0,0,.5); z-index:90; opacity:0; visibility:hidden; transition:opacity .25s, transform .25s; display:flex; align-items:center; gap:10px; max-width:calc(100vw - 32px)}
+  .toast.show{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0)}
+  .toast svg{width:18px; height:18px; color:var(--brand); flex-shrink:0}
+
+  .theme-toggle svg{width:20px;height:20px}
+  .theme-toggle .moon{display:none} .theme-toggle .sun{display:block}
+  :root[data-theme="dark"] .theme-toggle .moon{display:block} :root[data-theme="dark"] .theme-toggle .sun{display:none}
+  @media (prefers-color-scheme: dark){ .theme-toggle .moon{display:block} .theme-toggle .sun{display:none} }
+  :root[data-theme="light"] .theme-toggle .moon{display:none} :root[data-theme="light"] .theme-toggle .sun{display:block}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1000px){
+    .grid,.cats,.assure{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{grid-template-columns:1fr; gap:26px}
+    .feature{max-width:440px}
+    .band{grid-template-columns:1fr; padding:32px}
+    .coins-viz{display:none}
+  }
+  @media (max-width:640px){
+    .header-row{flex-wrap:wrap; gap:12px; padding:12px 16px}
+    .search{order:3; flex-basis:100%}
+    .brand{font-size:1.2rem}
+    .wallet span{display:none} .wallet{padding:0; width:44px; justify-content:center}
+    .wrap{padding:0 16px}
+    .section{padding:34px 0}
+    .band{padding:26px}
+    .foot-grid{gap:20px}
+    .assure{grid-template-columns:1fr}
+  }
+  @media (max-width:400px){
+    .grid,.cats{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>Frete grátis acima de R$ 99</span><span>5% de volta em PixCoins</span><span>Pix aprovado na hora</span><span>Assine a ração e economize 10%</span>
+    <span>Frete grátis acima de R$ 99</span><span>5% de volta em PixCoins</span><span>Pix aprovado na hora</span><span>Assine a ração e economize 10%</span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-row">
+    <a class="brand" href="#" aria-label="PixPet — início">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="var(--brand)"/>
+        <circle cx="14" cy="15.5" r="3.1" fill="#EAFBF2"/><circle cx="21.5" cy="13" r="3.1" fill="#EAFBF2"/><circle cx="28.5" cy="16.5" r="2.7" fill="#F0A93D"/>
+        <path d="M13 27c0-4.2 3.4-7 7.5-7s7.5 2.8 7.5 7c0 2.8-3 3.4-7.5 3.4S13 29.8 13 27z" fill="#EAFBF2"/>
+      </svg>
+      <span>Pix<span class="px">Pet</span></span>
+    </a>
+    <form class="search" role="search" onsubmit="return demo(event,'Busca')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" placeholder="Buscar ração, tapete, brinquedo…" aria-label="Buscar produtos" />
+    </form>
+    <div class="header-actions">
+      <div class="wallet" title="Seu saldo de cashback">
+        <span class="coin">$</span><span class="num">R$ 24,80</span>
+      </div>
+      <button class="icon-btn theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema claro/escuro">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Ração, higiene, brinquedos &amp; acessórios</span>
+      <h1 style="margin-top:14px">Cuidar do seu pet<br>rende <em>dinheiro de volta</em>.</h1>
+      <p class="hero-lead">Compre com Pix na hora, receba <b>5% em PixCoins</b> a cada pedido e economize ainda mais assinando a ração do mês.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#produtos">
+          Ver produtos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <button class="btn btn-ghost" onclick="demo(event,'Como funciona o cashback')">Como funciona o cashback</button>
+      </div>
+      <div class="hero-trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>Compra 100% segura</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Entrega rápida</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-11.4 7.8L3 21l1.8-6.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Suporte no WhatsApp</span>
+      </div>
+    </div>
+    <div class="feature" id="feature"><!-- injected by JS --></div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="section wrap" style="padding-top:24px">
+  <div class="cats" id="cats"><!-- injected --></div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section wrap" id="produtos">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Escolha do mês</span>
+      <h2 style="margin-top:8px">Mais vendidos</h2>
+      <p>Os favoritos de quem já compra na PixPet — com cashback em cada um.</p>
+    </div>
+    <a class="see-all" href="#" onclick="return demo(event,'Ver catálogo completo')">
+      Ver tudo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div class="grid" id="grid"><!-- injected --></div>
+</section>
+
+<!-- ============ CASHBACK BAND ============ -->
+<section class="section wrap">
+  <div class="band">
+    <div class="band__c">
+      <h2>Cada real gasto vira <em>PixCoins</em> — e PixCoins viram desconto no próximo pedido.</h2>
+      <p>Sem cartão fidelidade, sem letra miúda. O saldo aparece na sua conta na hora que o pagamento cai e nunca expira enquanto você comprar.</p>
+      <div class="band__list">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>5% de volta em tudo</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>+10% assinando a ração</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>Usa quando quiser</div>
+      </div>
+      <button class="btn" onclick="demo(event,'Criar conta')">Criar minha conta grátis</button>
+    </div>
+    <div class="coins-viz" aria-hidden="true">
+      <div class="mini m1"></div><div class="mini m2"></div><div class="mini m3"></div>
+      <div class="big-coin"><div><span>PIXCOINS</span><b>5%</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSURANCE ============ -->
+<section class="section wrap" style="padding-top:8px">
+  <div class="assure">
+    <div>
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v5c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V7z"/></svg></div>
+      <b>Pix na hora</b><p>Pagamento aprovado em segundos, sem espera nem taxa escondida.</p>
+    </div>
+    <div>
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg></div>
+      <b>Entrega rápida</b><p>Receba a ração antes de acabar. Frete grátis acima de R$ 99.</p>
+    </div>
+    <div>
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v5h5"/><path d="M3.5 8a9 9 0 1 1-.8 6"/></svg></div>
+      <b>Assinatura sem susto</b><p>A ração chega todo mês no automático — pause ou cancele quando quiser.</p>
+    </div>
+    <div>
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-11.4 7.8L3 21l1.8-6.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+      <b>Gente de verdade</b><p>Dúvida sobre qual ração? Fale com a gente no WhatsApp.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:280px">
+        <div class="brand"><span>Pix<span class="px">Pet</span></span></div>
+        <p>A casa de ração que devolve dinheiro pra você. Cuidar do pet ficou mais fácil — e mais barato.</p>
+      </div>
+      <div><b>Loja</b><p style="margin-top:8px">Ração<br>Higiene<br>Brinquedos<br>Acessórios</p></div>
+      <div><b>Conta</b><p style="margin-top:8px">Meus pedidos<br>Saldo de cashback<br>Minha assinatura<br>Endereços</p></div>
+      <div><b>Ajuda</b><p style="margin-top:8px">WhatsApp<br>Trocas e devoluções<br>Formas de pagamento<br>Fale conosco</p></div>
+    </div>
+    <p class="foot-note">Protótipo de apresentação · PixPet · Pagamento via Pix e cartão · Este é um demo — nenhum pedido real é processado.</p>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho de compras" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Seu carrinho</h3>
+    <button class="icon-btn" onclick="closeCart()" aria-label="Fechar carrinho" style="width:38px;height:38px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="ship-bar" id="shipBar" hidden>
+    <p id="shipMsg"></p>
+    <div class="ship-track"><div class="ship-fill" id="shipFill"></div></div>
+  </div>
+  <div class="drawer__items" id="cartItems"></div>
+  <div class="drawer__foot" id="cartFoot" hidden>
+    <div class="sumline"><span>Subtotal</span><b class="num" id="sumSubtotal">R$ 0,00</b></div>
+    <div class="sumline"><span>Frete</span><b class="num" id="sumShip">—</b></div>
+    <div class="sumline cash"><span>PixCoins que você ganha</span><b class="num" id="sumCash">+R$ 0,00</b></div>
+    <div class="sumline total"><span>Total</span><b class="num" id="sumTotal">R$ 0,00</b></div>
+    <button class="btn btn-primary" style="width:100%" onclick="demo(event,'Ir para o pagamento')">
+      Pagar com Pix
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <div class="pix-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+      Aprovação na hora · Ambiente seguro
+    </div>
+  </div>
+</aside>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ---------- Dados reais (payload fornecido) ---------- */
+const SB = "https://pkvhsxohmuntavabkjtx.supabase.co/storage/v1/object/public/petshop-products/";
+const PRODUCTS = [
+  { id:"golden-sache", nome:"Ração Úmida Sachê Adulto Peixe · Raças Médias", marca:"Golden", preco:6.25, promo:5.47, img:SB+"caes/racao-umida-sache.png", cat:"racao", estoque:120, featured:true, sub:true },
+  { id:"hercosul-tapete", nome:"Tapete Higiênico 30un · Raças Pequenas", marca:"Hercosul", preco:41.06, promo:35.16, img:SB+"caes/tapete-higienico.png", cat:"higiene", estoque:47 },
+  { id:"magnus-tapete", nome:"Tapete Higiênico 50un · Raças Médias", marca:"Magnus", preco:64.81, promo:null, img:SB+"caes/tapete-higienico.png", cat:"higiene", estoque:33 },
+  { id:"pawise-bola", nome:"Brinquedo Bola · Raças Pequenas", marca:"Pawise", preco:35.91, promo:null, img:SB+"caes/brinquedo-bola.png", cat:"brinquedo", estoque:60 },
+  { id:"original", nome:"Kit Original PixPet", marca:"Original", preco:100.00, promo:null, img:SB+"products/1776920271616-jx8ylto.png", cat:"acessorio", estoque:15 }
+];
+const byId = id => PRODUCTS.find(p => p.id === id);
+const CASHBACK = 0.05, SUB_DISCOUNT = 0.10, FREE_SHIP = 99, SHIP_FEE = 12.90;
+
+const CATS = [
+  { key:"racao", label:"Ração", sub:"Seca, úmida & prescrita", hue:"#2E9B6E", tint:"var(--brand-tint)", glyph:'<path d="M4 9c0-1 4-3 8-3s8 2 8 3v2c0 4-3 8-8 8s-8-4-8-8z"/><path d="M8 10h.01M12 9h.01M16 10h.01M10 13h.01M14 13h.01"/>' },
+  { key:"higiene", label:"Higiene", sub:"Tapetes & banho", hue:"#3B82C4", tint:"var(--surface-2)", glyph:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16M9 4v16"/>' },
+  { key:"brinquedo", label:"Brinquedos", sub:"Diversão garantida", hue:"#E0902A", tint:"var(--amber-tint)", glyph:'<circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>' },
+  { key:"acessorio", label:"Acessórios", sub:"Coleiras, comedouros…", hue:"#E24B3F", tint:"var(--sale-tint)", glyph:'<path d="M7 10a5 5 0 0 1 10 0v3a5 5 0 0 1-10 0z"/><path d="M12 3v2M9 20h6"/>' }
+];
+
+/* ---------- Utils ---------- */
+const brl = n => "R$ " + n.toFixed(2).replace(".", ",");
+const eff = p => p.promo ?? p.preco;
+const pct = p => p.promo ? Math.round((1 - p.promo/p.preco) * 100) : 0;
+
+/* SVG placeholder por categoria (fallback quando a foto real não carrega).
+   Cor em hex concreto (CSS vars não resolvem dentro de um data-URI SVG) e o
+   documento inteiro é encodado de uma vez para um URI válido. */
+function placeholder(p){
+  const c = CATS.find(x => x.key === p.cat) || CATS[0];
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>`
+    + `<g transform='translate(100 92)'>`
+    + `<circle r='52' fill='${c.hue}' opacity='0.14'/>`
+    + `<g transform='translate(-24 -24) scale(2)' fill='none' stroke='${c.hue}' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'>${c.glyph}</g>`
+    + `</g>`
+    + `<text x='100' y='172' text-anchor='middle' font-family='Arial' font-size='13' font-weight='700' fill='#8a988f'>${p.marca}</text>`
+    + `</svg>`;
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+function imgTag(p, cls){
+  return `<img src="${p.img}" alt="${p.nome}" class="${cls||''}" loading="lazy"
+    onerror="this.onerror=null;this.classList.add('svg-ph');this.style.mixBlendMode='normal';this.src=placeholder(byId('${p.id}'))">`;
+}
+
+/* ---------- Estado do carrinho ---------- */
+const cart = {}; // id -> {qty, sub}
+
+function render(){ renderFeature(); renderCats(); renderGrid(); renderCart(); }
+
+function renderCats(){
+  document.getElementById("cats").innerHTML = CATS.map(c => `
+    <button class="cat" onclick="demo(event,'Categoria: ${c.label}')">
+      <span class="cat__ic" style="background:${c.tint};color:${c.hue}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${c.glyph}</svg>
+      </span>
+      <span><b>${c.label}</b><small>${c.sub}</small></span>
+    </button>`).join("");
+}
+
+let featureSub = false;
+function toggleFeatureSub(on){ featureSub = on; renderFeature(); }
+
+function renderFeature(){
+  const p = PRODUCTS.find(x => x.featured);
+  const base = eff(p);
+  const price = featureSub ? base*(1-SUB_DISCOUNT) : base;
+  document.getElementById("feature").innerHTML = `
+    <div class="feature__ribbon">
+      ${p.promo ? `<span class="tag tag-sale">-${pct(p)}%</span>` : ``}
+      <span class="tag tag-cash">+ ${brl(price*CASHBACK)} de volta</span>
+    </div>
+    <div class="feature__media">${imgTag(p)}</div>
+    <div class="feature__body">
+      <div class="feature__brand">${p.marca}</div>
+      <div class="feature__name">${p.nome}</div>
+      <div class="price-row">
+        <span class="price-now num">${brl(price)}</span>
+        ${p.promo ? `<span class="price-old num">${brl(p.preco)}</span>` : ``}
+        <span class="price-cash"><span class="coin" style="width:14px;height:14px;font-size:0"></span>PixCoins</span>
+      </div>
+      <div class="sub-toggle">
+        <div class="switch">
+          <input type="checkbox" id="subSwitch" ${featureSub?'checked':''} onchange="toggleFeatureSub(this.checked)" aria-label="Assinar e economizar 10%">
+          <span class="slider"></span>
+        </div>
+        <label for="subSwitch"><b>Assinar e economizar 10%</b> — a ração chega todo mês, pause quando quiser.</label>
+      </div>
+      <div class="feature__actions">
+        <button class="btn btn-primary" onclick="addToCart('${p.id}', featureSub)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+          Adicionar
+        </button>
+      </div>
+    </div>`;
+}
+
+function renderGrid(){
+  document.getElementById("grid").innerHTML = PRODUCTS.map(p => {
+    const price = eff(p);
+    const inCart = cart[p.id];
+    return `
+    <article class="card">
+      <div class="card__badges">
+        ${p.promo ? `<span class="tag tag-sale">-${pct(p)}%</span>` : ``}
+      </div>
+      <button class="card__fav" aria-label="Favoritar" onclick="demo(event,'Favoritado')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+      </button>
+      <div class="card__media">${imgTag(p)}</div>
+      <div class="card__body">
+        <div class="card__brand">${p.marca}</div>
+        <div class="card__name">${p.nome}</div>
+        <div class="card__meta">
+          <div class="card__price">
+            <span class="card__now num">${brl(price)}</span>
+            ${p.promo ? `<span class="card__old num">${brl(p.preco)}</span>` : ``}
+          </div>
+          <div class="card__cash"><span class="coin"></span>+ ${brl(price*CASHBACK)} em PixCoins</div>
+          ${p.estoque <= 50 ? `<div class="card__stock"><i></i>${p.estoque} em estoque</div>` : ``}
+          <button class="card__add ${inCart?'added':''}" onclick="addToCart('${p.id}', false)">
+            ${inCart ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 4 4L19 6"/></svg> No carrinho (${inCart.qty})`
+                     : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg> Adicionar`}
+          </button>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+/* ---------- Ações ---------- */
+function addToCart(id, sub){
+  if(!cart[id]) cart[id] = { qty:0, sub:!!sub };
+  cart[id].qty++;
+  if(sub) cart[id].sub = true;
+  const p = byId(id);
+  render();
+  bumpBadge();
+  toast(`${p.marca} adicionado ao carrinho`);
+}
+function changeQty(id, delta){
+  if(!cart[id]) return;
+  cart[id].qty += delta;
+  if(cart[id].qty <= 0) delete cart[id];
+  render();
+  updateBadge();
+}
+function removeItem(id){ delete cart[id]; render(); updateBadge(); }
+
+/* ---------- Carrinho / totais ---------- */
+function cartLines(){ return Object.keys(cart).map(id => ({ p:byId(id), ...cart[id] })); }
+function lineUnit(l){ return l.sub ? eff(l.p)*(1-SUB_DISCOUNT) : eff(l.p); }
+function totals(){
+  const lines = cartLines();
+  const subtotal = lines.reduce((s,l)=> s + lineUnit(l)*l.qty, 0);
+  const count = lines.reduce((s,l)=> s + l.qty, 0);
+  const ship = count===0 ? 0 : (subtotal >= FREE_SHIP ? 0 : SHIP_FEE);
+  const cash = subtotal * CASHBACK;
+  return { lines, subtotal, count, ship, cash, total: subtotal + ship };
+}
+
+function renderCart(){
+  const t = totals();
+  const items = document.getElementById("cartItems");
+  const foot = document.getElementById("cartFoot");
+  const shipBar = document.getElementById("shipBar");
+
+  if(t.count === 0){
+    items.innerHTML = `<div class="cart-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+      <b>Seu carrinho está vazio</b>
+      Adicione ração, higiene ou brinquedos e comece a juntar PixCoins.
+    </div>`;
+    foot.hidden = true; shipBar.hidden = true;
+    return;
+  }
+  foot.hidden = false; shipBar.hidden = false;
+
+  items.innerHTML = t.lines.map(l => `
+    <div class="line">
+      <div class="line__img">${imgTag(l.p)}</div>
+      <div class="line__info">
+        <div class="line__name">${l.p.marca} · ${l.p.nome}</div>
+        ${l.sub ? `<span class="line__sub"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 3v5h5"/><path d="M3.5 8a9 9 0 1 1-.8 6"/></svg>Assinatura −10%</span>` : ``}
+        <div class="line__bottom">
+          <div class="stepper">
+            <button onclick="changeQty('${l.p.id}',-1)" aria-label="Diminuir">−</button>
+            <span class="num">${l.qty}</span>
+            <button onclick="changeQty('${l.p.id}',1)" aria-label="Aumentar">+</button>
+          </div>
+          <span class="line__price num">${brl(lineUnit(l)*l.qty)}</span>
+        </div>
+        <button class="line__rm" onclick="removeItem('${l.p.id}')">Remover</button>
+      </div>
+    </div>`).join("");
+
+  // free-shipping progress
+  const fill = document.getElementById("shipFill");
+  const msg = document.getElementById("shipMsg");
+  if(t.subtotal >= FREE_SHIP){
+    fill.style.width = "100%";
+    msg.innerHTML = `<b>Frete grátis desbloqueado!</b> 🎉`;
+  } else {
+    fill.style.width = Math.min(100, t.subtotal/FREE_SHIP*100) + "%";
+    msg.innerHTML = `Faltam <b>${brl(FREE_SHIP - t.subtotal)}</b> para o frete grátis`;
+  }
+
+  document.getElementById("sumSubtotal").textContent = brl(t.subtotal);
+  document.getElementById("sumShip").textContent = t.ship===0 ? "Grátis" : brl(t.ship);
+  document.getElementById("sumCash").textContent = "+" + brl(t.cash);
+  document.getElementById("sumTotal").textContent = brl(t.total);
+}
+
+/* ---------- Badge ---------- */
+function updateBadge(){
+  const t = totals(); const b = document.getElementById("cartBadge");
+  b.textContent = t.count; b.hidden = t.count === 0;
+}
+function bumpBadge(){
+  updateBadge();
+  const b = document.getElementById("cartBadge");
+  b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop");
+}
+
+/* ---------- Drawer ---------- */
+function openCart(){
+  document.getElementById("overlay").classList.add("open");
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("drawer").setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+}
+function closeCart(){
+  document.getElementById("overlay").classList.remove("open");
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("drawer").setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeCart(); });
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 4 4L19 6"/></svg>${msg}`;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2200);
+}
+
+/* ---------- Tema ---------- */
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute("data-theme")
+    || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  try{ localStorage.setItem("pixpet-theme", next); }catch(e){}
+}
+(function(){ try{ const s=localStorage.getItem("pixpet-theme"); if(s) document.documentElement.setAttribute("data-theme", s); }catch(e){} })();
+
+/* ---------- Demo stub (feedback honesto p/ ações não implementadas na POC) ---------- */
+function demo(e, what){
+  if(e) e.preventDefault();
+  toast(`${what} — próxima etapa (fase Nuxt)`);
+  return false;
+}
+
+render();
+</script>
+</body>
+</html>
