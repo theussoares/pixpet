@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>PixPet — Casa de Ração do seu bairro</title>
 <meta name="description" content="Ração, higiene, brinquedos e acessórios com Pix na hora, 5% de volta em PixCoins e assinatura que economiza. A casa de ração que devolve troco pro seu bolso." />
-<meta name="theme-color" content="#14432F" />
+<meta name="theme-color" content="#EE7B33" />
 <style>
   @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,__ANTON400__) format('woff2')}
   @font-face{font-family:'Hanken';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,__HANKEN400__) format('woff2')}
@@ -13,38 +13,20 @@
   @font-face{font-family:'Hanken';font-style:normal;font-weight:800;font-display:swap;src:url(data:font/woff2;base64,__HANKEN800__) format('woff2')}
 
   :root{
-    color-scheme: light dark;
-    --paper:#E7E3D5; --paper-2:#DEDAC8; --card:#F0ECDE;
-    --ink:#1C1E17; --ink-2:#5A5C4C;
-    --line:rgba(28,30,23,.16); --line-2:rgba(28,30,23,.30);
-    --green:#14432F; --green-2:#1E6B47; --on-green:#EDE7D3;
-    --tomato:#D6472A; --mustard:#E7A83A;
+    color-scheme: light;
+    /* paleta da marca PixPet: laranja + teal sobre creme/pêssego, texto navy */
+    --paper:#FBF3EC; --paper-2:#FBE7DA; --card:#FFFFFF;
+    --ink:#2B2F38; --ink-2:#65696F;
+    --line:rgba(43,47,56,.15); --line-2:rgba(43,47,56,.28);
+    --green:#EE7B33;   /* laranja — ação/energia (nome mantido p/ compat) */
+    --green-2:#16808D; /* teal — links, kickers, destaques */
+    --on-green:#FDF6F0;
+    --tomato:#DB4E37;  /* coral — acentos quentes */
+    --mustard:#E7A43A; /* dourado — moeda PixCoins */
     --sans:'Hanken','Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;
     --display:'Anton',var(--sans);
     --maxw:1180px;
-    --grain-blend:multiply; --grain-op:.05;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --paper:#15180F; --paper-2:#1D2114; --card:#22271A;
-      --ink:#ECE7D4; --ink-2:#A3A48D;
-      --line:rgba(236,231,212,.15); --line-2:rgba(236,231,212,.28);
-      --green:#4FB985; --green-2:#74D3A2; --on-green:#0E1710;
-      --tomato:#F0663F; --mustard:#EBB65A;
-      --grain-blend:screen; --grain-op:.04;
-    }
-  }
-  :root[data-theme="light"]{
-    --paper:#E7E3D5; --paper-2:#DEDAC8; --card:#F0ECDE;
-    --ink:#1C1E17; --ink-2:#5A5C4C; --line:rgba(28,30,23,.16); --line-2:rgba(28,30,23,.30);
-    --green:#14432F; --green-2:#1E6B47; --on-green:#EDE7D3;
-    --tomato:#D6472A; --mustard:#E7A83A; --grain-blend:multiply; --grain-op:.05;
-  }
-  :root[data-theme="dark"]{
-    --paper:#15180F; --paper-2:#1D2114; --card:#22271A;
-    --ink:#ECE7D4; --ink-2:#A3A48D; --line:rgba(236,231,212,.15); --line-2:rgba(236,231,212,.28);
-    --green:#4FB985; --green-2:#74D3A2; --on-green:#0E1710;
-    --tomato:#F0663F; --mustard:#EBB65A; --grain-blend:screen; --grain-op:.04;
+    --grain-blend:multiply; --grain-op:.045;
   }
 
   *{box-sizing:border-box}
@@ -74,9 +56,7 @@
   .kicker{font-family:var(--display); font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:var(--green-2)}
 
   /* ---------- Stamp ---------- */
-  .stamp{display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.03em; color:var(--tomato); border:2.5px solid var(--tomato); padding:3px 9px 2px; border-radius:5px; font-size:.72rem; line-height:1; transform:rotate(-5deg); mix-blend-mode:var(--grain-blend); opacity:.92}
-  @media (prefers-color-scheme: dark){ .stamp{mix-blend-mode:normal} }
-  :root[data-theme="dark"] .stamp{mix-blend-mode:normal}
+  .stamp{display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.03em; color:var(--tomato); border:2.5px solid var(--tomato); padding:3px 9px 2px; border-radius:5px; font-size:.72rem; line-height:1; transform:rotate(-5deg)}
 
   /* ---------- Hang tag (die-cut price) ---------- */
   .hangtag{position:relative; display:inline-flex; align-items:center; gap:6px; font-family:var(--display); background:var(--ink); color:var(--paper); padding:9px 15px 8px 22px; font-size:1.15rem; letter-spacing:.01em; clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%); box-shadow:2px 3px 0 var(--line-2)}
@@ -86,7 +66,7 @@
   .hangtag small{font-family:var(--sans); font-weight:800; font-size:.6em; opacity:.8}
 
   /* ---------- Top ticket strip ---------- */
-  .strip{background:var(--green); color:var(--on-green); overflow:hidden; white-space:nowrap; border-bottom:2px solid var(--ink)}
+  .strip{background:var(--ink); color:var(--on-green); overflow:hidden; white-space:nowrap; border-bottom:2px solid var(--ink)}
   .strip__t{display:inline-flex; padding:7px 0; font-family:var(--display); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; animation:marq 30s linear infinite}
   .strip__t span{padding:0 20px; display:inline-flex; align-items:center; gap:14px}
   .strip__t span::after{content:"✦"; color:var(--mustard)}
@@ -96,10 +76,17 @@
   /* ---------- Header ---------- */
   header.top{position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:2px solid var(--ink)}
   .top__row{display:flex; align-items:center; gap:18px; padding:12px 22px; max-width:var(--maxw); margin:0 auto}
-  .logo{font-family:var(--display); font-size:1.7rem; letter-spacing:.01em; display:flex; align-items:center; gap:9px; flex-shrink:0; line-height:1}
+  .logo{font-family:var(--display); font-size:1.55rem; letter-spacing:.01em; display:flex; align-items:center; gap:11px; flex-shrink:0; line-height:1}
   .logo .p2{color:var(--green-2)}
-  .logo .paws{display:inline-grid; gap:2px}
-  .logo .paws b{width:9px;height:9px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:var(--tomato); display:block}
+  .logo .mark{width:40px; height:40px; border-radius:11px; background:var(--green); border:2px solid var(--ink); display:grid; place-items:center; flex-shrink:0}
+  .logo .paws{display:block; position:relative; width:22px; height:20px; transform:rotate(-6deg)}
+  .logo .paws b{position:absolute; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#fff; display:block}
+  .logo .paws b:nth-child(1){width:6px;height:7px;left:2px;top:0}
+  .logo .paws b:nth-child(2){width:6px;height:7px;left:10px;top:-1px}
+  .logo .paws b:nth-child(3){width:6px;height:7px;left:16px;top:4px}
+  .logo .paws b:nth-child(4){width:14px;height:11px;left:4px;bottom:0;border-radius:50%}
+  .logo__txt{display:flex; flex-direction:column; gap:2px}
+  .logo__txt small{font-family:var(--sans); font-weight:700; font-size:.5rem; letter-spacing:.16em; color:var(--green-2); text-transform:uppercase}
   .search{flex:1; min-width:0; position:relative; display:flex; align-items:center}
   .search svg{position:absolute; left:13px; width:19px; height:19px; color:var(--ink-2)}
   .search input{width:100%; height:46px; border:2px solid var(--ink); background:var(--card); color:var(--ink); border-radius:3px; padding:0 14px 0 40px; font-family:var(--sans); font-size:.95rem; font-weight:600}
@@ -109,8 +96,9 @@
   .ibtn{width:46px; height:46px; display:grid; place-items:center; border:2px solid var(--ink); background:var(--card); border-radius:3px}
   .ibtn:hover{background:var(--paper-2)}
   .ibtn svg{width:21px; height:21px}
-  .wallet{display:flex; align-items:center; gap:8px; height:46px; padding:0 13px; border:2px solid var(--ink); background:var(--mustard); color:#2c2006; border-radius:3px; font-family:var(--display); font-size:.95rem; letter-spacing:.02em}
-  .wallet .coin{width:17px;height:17px;border-radius:50%; background:radial-gradient(circle at 34% 30%,#F6D77A,#CE8A1E); box-shadow:inset 0 -2px 3px rgba(0,0,0,.25)}
+  .wallet{display:flex; align-items:center; gap:8px; height:46px; padding:0 14px; border:2px solid var(--ink); background:var(--card); color:var(--ink); border-radius:3px; font-family:var(--display); font-size:.95rem; letter-spacing:.02em}
+  .wallet:hover{background:var(--paper-2)}
+  .wallet .coin{width:17px;height:17px;border-radius:50%; background:radial-gradient(circle at 34% 30%,#F6D77A,#CE8A1E); box-shadow:inset 0 -2px 3px rgba(0,0,0,.25); flex-shrink:0}
   .cartbtn{position:relative}
   .cart-badge{position:absolute; top:-7px; right:-7px; min-width:21px; height:21px; padding:0 5px; border-radius:11px; background:var(--tomato); color:#fff; font-family:var(--display); font-size:.72rem; display:grid; place-items:center; border:2px solid var(--paper); transition:transform .16s ease-out}
   .cart-badge.pop{transform:scale(1.4)}
@@ -134,6 +122,9 @@
   .btn-ink{background:var(--ink); color:var(--paper); box-shadow:4px 4px 0 var(--green-2)}
   .btn-ink:hover{transform:translate(-1px,-1px); box-shadow:6px 6px 0 var(--green-2)}
   .btn-ink:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--green-2)}
+  .btn-orange{background:var(--green); color:var(--ink); box-shadow:4px 4px 0 var(--ink)}
+  .btn-orange:hover{transform:translate(-1px,-1px); box-shadow:6px 6px 0 var(--ink)}
+  .btn-orange:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink)}
   .btn-out{background:transparent; color:var(--ink)}
   .btn-out:hover{background:var(--paper-2)}
   .btn-sm{height:46px; padding:0 18px; font-size:.9rem}
@@ -198,15 +189,15 @@
   .good__old{display:block; font-size:.8rem; color:var(--ink-2); text-decoration:line-through; margin-bottom:3px}
   .good__cash{margin-top:9px; font-family:var(--display); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-2); display:flex; align-items:center; gap:6px}
   .good__cash i{width:14px;height:14px;border-radius:50%; background:radial-gradient(circle at 34% 30%,#F6D77A,#CE8A1E); flex-shrink:0}
-  .good__add{margin-top:12px; width:100%; height:46px; border:2px solid var(--ink); background:var(--green); color:var(--on-green); border-radius:4px; font-family:var(--display); text-transform:uppercase; letter-spacing:.04em; font-size:.9rem; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s, transform .1s ease-out}
-  .good__add:hover{background:var(--green-2)}
+  .good__add{margin-top:12px; width:100%; height:46px; border:2px solid var(--ink); background:var(--green); color:var(--ink); border-radius:4px; font-family:var(--display); text-transform:uppercase; letter-spacing:.04em; font-size:.9rem; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s, transform .1s ease-out}
+  .good__add:hover{background:#E06E22}
   .good__add:active{transform:translateY(2px)}
   .good__add svg{width:18px;height:18px}
   .good__add.added{background:var(--ink); color:var(--paper)}
   .good__stock{font-family:var(--display); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--tomato); margin-top:8px}
 
   /* ---------- Cashback: loyalty ticket ---------- */
-  .coupon{position:relative; border:2px solid var(--ink); border-radius:8px; background:var(--green); color:var(--on-green); display:grid; grid-template-columns:1.3fr .7fr; overflow:hidden}
+  .coupon{position:relative; border:2px solid var(--ink); border-radius:8px; background:var(--green-2); color:var(--on-green); display:grid; grid-template-columns:1.3fr .7fr; overflow:hidden}
   .coupon__c{padding:40px 42px}
   .coupon__c h2{font-family:var(--display); font-size:clamp(1.9rem,4vw,2.9rem); text-transform:uppercase; line-height:.96}
   .coupon__c h2 .m{color:var(--mustard)}
@@ -290,11 +281,6 @@
   .toast.show{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0)}
   .toast svg{width:18px;height:18px; color:var(--mustard); flex-shrink:0}
 
-  .tgl .moon{display:none} .tgl .sun{display:block}
-  @media (prefers-color-scheme: dark){ .tgl .moon{display:block} .tgl .sun{display:none} }
-  :root[data-theme="dark"] .tgl .moon{display:block} :root[data-theme="dark"] .tgl .sun{display:none}
-  :root[data-theme="light"] .tgl .moon{display:none} :root[data-theme="light"] .tgl .sun{display:block}
-
   /* ---------- Responsive ---------- */
   @media (max-width:1000px){
     .goods{grid-template-columns:repeat(2,1fr)}
@@ -327,20 +313,16 @@
 <!-- HEADER -->
 <header class="top">
   <div class="top__row">
-    <a class="logo" href="#" aria-label="PixPet início">
-      <span class="paws"><b></b><b style="background:var(--green-2)"></b></span>
-      <span>PIX<span class="p2">PET</span></span>
+    <a class="logo" href="#" aria-label="PixPet Petshop Três Lagoas — início">
+      <span class="mark"><span class="paws"><b></b><b></b><b></b><b></b></span></span>
+      <span class="logo__txt"><span>PIX<span class="p2">PET</span></span><small>Petshop · Três Lagoas</small></span>
     </a>
     <form class="search" role="search" onsubmit="return demo(event,'Busca')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="search" placeholder="Buscar ração, tapete, brinquedo…" aria-label="Buscar produtos" />
     </form>
     <div class="top__act">
-      <div class="wallet" title="Seu saldo de PixCoins"><span class="coin"></span><span class="num">R$ 24,80</span></div>
-      <button class="ibtn tgl" onclick="toggleTheme()" aria-label="Alternar tema">
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+      <button class="wallet" onclick="demo(event,'Meu saldo de PixCoins')" title="Seu saldo de PixCoins" aria-label="Meu saldo de PixCoins: R$ 24,80"><span class="coin"></span><span class="num">R$ 24,80</span></button>
       <button class="ibtn cartbtn" onclick="openCart()" aria-label="Abrir carrinho">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
         <span class="cart-badge" id="cartBadge" hidden>0</span>
@@ -358,7 +340,7 @@
       <h1 style="margin-top:16px">Bicho<br><span class="to">feliz</span>, troco<br>no <span class="gr">bolso.</span></h1>
       <p class="hero__lead">Ração, higiene e brinquedo com <b>Pix na hora</b> e <b>5% de volta</b> em PixCoins. Assine a ração do mês e economize mais ainda.</p>
       <div class="hero__cta">
-        <a class="btn btn-ink" href="#prateleira">Ver a prateleira
+        <a class="btn btn-orange" href="#prateleira">Ver a prateleira
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <button class="linkarrow" onclick="demo(event,'Como funciona o cashback')">Como funciona o cashback
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -618,8 +600,6 @@ function closeCart(){document.getElementById("overlay").classList.remove("open")
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
 let toastTimer;
 function toast(msg){const el=document.getElementById("toast"); el.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 12 4 4L19 6"/></svg>${msg}`; el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("show"),2100);}
-function toggleTheme(){const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"); const next=cur==="dark"?"light":"dark"; document.documentElement.setAttribute("data-theme",next); try{localStorage.setItem("pixpet-theme",next);}catch(e){}}
-(function(){try{const s=localStorage.getItem("pixpet-theme"); if(s)document.documentElement.setAttribute("data-theme",s);}catch(e){}})();
 function demo(e,what){if(e)e.preventDefault(); toast(what+" — fase Nuxt"); return false;}
 render();
 </script>
