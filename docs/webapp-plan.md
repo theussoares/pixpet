@@ -11,7 +11,7 @@ Design system em `design-system.md` atualizado com os tokens do Stitch.
       badge de cashback, bottom nav.
 - [x] **Prateleira / PLP**: Filter + Sort, chips de categoria, cards com cashback,
       "Load more".
-- [ ] **Minhas Assinaturas**: Active Shipments (Editar/Adiar/Enviar agora), resumo de
+- [x] **Minhas Assinaturas**: Active Shipments (Editar/Adiar/Enviar agora), resumo de
       economia + rewards, planos pausados/cancelados.
 
 ## Tokens Stitch (Material 3) — para a camada ui do Nuxt
