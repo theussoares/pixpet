@@ -7,7 +7,7 @@ Design system em `design-system.md` atualizado com os tokens do Stitch.
 - [x] **PDP** (`prototype/produto.html`) — compra única × assinatura (frequência 30/45/60
       + cashback extra), galeria, avaliações, frete por CEP, WhatsApp, benefícios,
       relacionados, carrinho funcional, bottom nav.
-- [ ] **Home** (formato app): banner "Exclusivo App", category circles, destaques com
+- [x] **Home** (formato app): banner "Exclusivo App", category circles, destaques com
       badge de cashback, bottom nav.
 - [ ] **Prateleira / PLP**: Filter + Sort, chips de categoria, cards com cashback,
       "Load more".
